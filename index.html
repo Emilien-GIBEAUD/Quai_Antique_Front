@@ -4,15 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./scss/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400&display=swap" rel="stylesheet">
 
     <script defer type="module" src="./Router/router.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <header><i class="bi bi-house-door-fill"></i> Menu du site Quai Antique</header>
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><i class="bi bi-house-door-fill"></i> Quai Antique</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link" href="/">Accueil</a>
+                        <a class="nav-link" href="/galerie">Galerie</a>
+                        <a class="nav-link" href="#">La carte</a>
+                        <a class="nav-link" href="#">Réservation</a>
+                        <a class="nav-link" href="#">Mon compte</a>
+                        <a class="nav-link" href="#">Connexion/<br>Deconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main id="main-page">
         <!-- Le contenu de la page sera injectée ici -->
