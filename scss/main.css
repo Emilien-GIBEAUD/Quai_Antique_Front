@@ -12008,6 +12008,10 @@ main {
   margin-top: 50px;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .footer {
   padding: 5px 5px 0 5px;
   position: absolute;
