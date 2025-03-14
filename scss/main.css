@@ -11971,12 +11971,45 @@ html {
   min-height: 100%;
 }
 
+p {
+  font-family: "Hind Madurai", serif;
+}
+
 main {
   margin-bottom: 250px;
 }
 
+.big-title {
+  position: relative;
+}
+.big-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/chef.jpg);
+  background-size: cover;
+  background-position: 50% 30%;
+  filter: brightness(0.5);
+}
+.big-title * {
+  position: relative;
+}
+.big-title .big-title-content {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.big-title .big-title-content button {
+  margin-top: 50px;
+}
+
 .footer {
-  padding: 15px 15px 0 15px;
+  padding: 5px 5px 0 5px;
   position: absolute;
   bottom: 0;
   width: 100%;
