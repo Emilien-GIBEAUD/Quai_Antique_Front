@@ -12,6 +12,10 @@ header{
     z-index: 1;
 }
 
+main{
+    height: 100vh;
+}
+
 p{
     font-family: $font-family-serif;
 }
@@ -53,6 +57,30 @@ p{
     text-align: justify;
 }
 
+.image-card{
+    position: relative;
+    &:hover{
+        .titre-image{
+            opacity: 1;
+        }
+        img{
+            filter: brightness(0.5);
+        }
+    }
+
+    img{
+        transition: all 0.5s;
+    }
+
+    .titre-image{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.5s;
+    }
+}
 
 .footer{
     padding: 5px 5px 0 5px;
