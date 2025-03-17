@@ -63,6 +63,7 @@ p{
     text-align: justify;
 }
 
+// Galerie
 .image-card{
     position: relative;
     &:hover{
@@ -101,13 +102,24 @@ p{
     }
 }
 
+.form-label{
+    color: $primary;
+}
+
+// Réservation
+.allReservations{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    a{
+        padding: 5px;
+        color: $black;
+    }
+}
+
 .footer{
     position: sticky;
     bottom: 0;
     padding: 5px 5px 0 5px;
     width: 100%;
-}
-
-.form-label{
-    color: $primary;
 }
