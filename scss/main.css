@@ -11971,14 +11971,16 @@ html {
   min-height: 100%;
 }
 
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
 header {
   position: sticky;
   top: 0;
   z-index: 1;
-}
-
-main {
-  height: 100vh;
 }
 
 p {
@@ -12040,8 +12042,12 @@ p {
 }
 
 .footer {
-  padding: 5px 5px 0 5px;
   position: sticky;
   bottom: 0;
+  padding: 5px 5px 0 5px;
   width: 100%;
+}
+
+.form-label {
+  color: #906427;
 }/*# sourceMappingURL=main.css.map */
