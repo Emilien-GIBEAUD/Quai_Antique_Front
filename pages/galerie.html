@@ -5,11 +5,24 @@
 </div>
 
 <div class="container">
+    <div class="text-center pt-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageEditModal">
+            Ajouter une photo
+        </button>
+    </div>
     <div class="row row-cols-2 row-cols-md-3">
         <div class="col">
             <div class="image-card text-white p-3">
                 <img class="w-100 rounded-4" src="../images/chef2.jpg" alt="Photo du chef Arnaud Michant">
                 <p class="titre-image">Titre</p>
+                <div class="image-edit p-4">
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#imageEditModal">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#imageDeleteModal">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="col">
@@ -40,6 +53,61 @@
             <div class="image-card text-white p-3">
                 <img class="w-100 rounded-4" src="../images/plats2.jpg" alt="Photo d'un plat">
                 <p class="titre-image">Titre</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center py-4">
+        <a href="#" class="btn btn-primary">Réserver</a>
+    </div>
+
+</div>
+
+<!-- Modal Edition -->
+<div class="modal fade" id="imageEditModal" tabindex="-1" aria-labelledby="imageEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="imageEditModalLabel">Edition photo</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="photoNameInput" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="photoNameInput" placeholder="Saisir le titre de la photo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="photoInput" class="form-label">Photo</label>
+                        <input type="file" class="form-control" id="photoInput">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal suppression -->
+<div class="modal fade" id="imageDeleteModal" tabindex="-1" aria-labelledby="imageDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="imageDeleteModalLabel">Etes-vous sûr de vouloir supprimer cette photo ?</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3 text-center">
+                        <p>Titre</p>
+                        <img class="w-100 rounded-4" src="../images/chef2.jpg" alt="Photo du chef Arnaud Michant">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
