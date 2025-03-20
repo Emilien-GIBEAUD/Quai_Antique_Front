@@ -4,11 +4,14 @@
     </div>
 </div>
 
-<div class="text-center py-4">
+<div class="text-center py-4" data-show="disconnected">
+    <a href="/signin" class="btn btn-primary">Se connecter</a>
+</div>
+<div class="text-center py-4" data-show="connected">
     <a href="/reserve" class="btn btn-primary">Réserver</a>
 </div>
 
-<div class="container text-center allReservations">
+<div class="container text-center allReservations" data-show="connected">
     <a href="#">
         <span>18/03/2025</span> |
         <span>12:30</span> |

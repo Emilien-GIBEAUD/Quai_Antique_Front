@@ -11,6 +11,7 @@
 
     <script defer type="module" src="./Router/router.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="./js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -26,9 +27,10 @@
                         <a class="nav-link my-auto" href="/">Accueil</a>
                         <a class="nav-link my-auto" href="/galerie">Galerie</a>
                         <a class="nav-link my-auto" href="/menu">La carte</a>
-                        <a class="nav-link my-auto" href="/allReservations">Réservations</a>
+                        <a class="nav-link my-auto" href="/allReservations">Mes réservations</a>
                         <a class="nav-link my-auto" href="/account">Mon compte</a>
-                        <a class="nav-link my-auto" href="/signin">Connexion</a>
+                        <a class="nav-link my-auto" href="/signin" data-show="disconnected">Connexion</a>
+                        <a class="nav-link my-auto" href="/signout" data-show="connected">Déconnexion</a>
                     </div>
                 </div>
             </div>
