@@ -30,7 +30,10 @@
                         <a class="nav-link my-auto" href="/allReservations">Mes réservations</a>
                         <a class="nav-link my-auto" href="/account">Mon compte</a>
                         <a class="nav-link my-auto" href="/signin" data-show="disconnected">Connexion</a>
-                        <a class="nav-link my-auto" href="/signout" data-show="connected">Déconnexion</a>
+                        <div class="d-flex flex-column align-items-center justify-content-center" data-show="connected">
+                            <small class="text-center text-white" id="userName"></small>
+                            <a class="btn btn-primary nav-link text-center mx-1 my-auto py-0" href="/signout">Déconnexion</a>
+                        </div>
                     </div>
                 </div>
             </div>

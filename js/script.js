@@ -1,5 +1,6 @@
 export const apiUrl = "http://127.0.0.1:8000/api/";
 
+
 export const tokenCookieName = "accesstoken";
 // 2 méthodes pour créer et lire un token à l'aide des méthodes ---Cookie
 export function setToken(token) {
@@ -9,13 +10,18 @@ function getToken() {
     return getCookie(tokenCookieName);
 }
 
-
 export const roleCookieName = "role";
 // Méthode pour lire le role
 export function getRole() {
     return getCookie(roleCookieName);
 }
 
+// Affichage des informations utilisateur dans le 
+if (isConnected()) {
+    const infos = await getInfoUser();
+    const userName = document.getElementById("userName");
+    userName.textContent = `${infos.firstName} connecté`
+}
 
 // 3 méthodes pour créer, lire et supprimer des cookies, à chercher sur internet
 export function setCookie(name,value,days) {
@@ -90,4 +96,28 @@ export function sanityzeHTML(text){
     const tempHtml = document.createElement("div");
     tempHtml.textContent = text;
     return tempHtml.innerHTML;
+}
+
+async function getInfoUser(){
+    const myHeaders = new Headers();
+    myHeaders.append("X-AUTH-TOKEN", getToken());
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+    };
+
+    return fetch(apiUrl + "account/me", requestOptions)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Impossible de récupérer les données utilisateur !");
+            }
+            
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
