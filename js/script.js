@@ -73,15 +73,21 @@ export function showHideForRoles(){
                 }
                 break;
             case "admin":
-                if(!userConnected || role !== "admin"){
+                if(!userConnected || role !== "ROLE_ADMIN"){
                     element.classList.add("d-none");
                 }
                 break;
             case "user":
-                if(!userConnected || role !== "user"){
+                if(!userConnected || role !== "ROLE_USER"){
                     element.classList.add("d-none");
                 }
                 break;
         }
     })
+}
+
+export function sanityzeHTML(text){
+    const tempHtml = document.createElement("div");
+    tempHtml.textContent = text;
+    return tempHtml.innerHTML;
 }

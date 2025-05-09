@@ -1,4 +1,4 @@
-import { setToken, setCookie, roleCookieName, apiUrl } from '../script.js';
+import { setToken, setCookie, roleCookieName, apiUrl, sanityzeHTML } from '../script.js';
 
 // gestion de la connexion
 // On utilise bien des var au cas ou l'utilisateur quitte puis revient sur la page, à voir si il est possible de gérer cela autrement.
@@ -17,8 +17,8 @@ function checkCredentials(){
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-        username: formData.get("emailInput"),
-        password: formData.get("pswInput")
+        username: sanityzeHTML(formData.get("emailInput")),
+        password: sanityzeHTML(formData.get("pswInput"))
     });
 
     const requestOptions = {
@@ -46,7 +46,8 @@ function checkCredentials(){
             setToken(token);
 
             // Attribution du role
-            setCookie(roleCookieName,result.roles[0],7);
+            // setCookie(roleCookieName,result.roles[0],7);     // ROLE_USER
+            setCookie(roleCookieName,"ROLE_ADMIN",7);
 
             document.location.href="/";
         })

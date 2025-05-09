@@ -1,3 +1,5 @@
+import { apiUrl, sanityzeHTML } from '../script.js';
+
 
 const nameSignup = document.getElementById("nameSignup");
 const firstnameSignup = document.getElementById("firstnameSignup");
@@ -99,10 +101,10 @@ function userSuscription(){
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-        firstName: formData.get("firstnameSignup"),
-        lastName: formData.get("nameSignup"),
-        email: formData.get("emailSignup"),
-        password: formData.get("pswSignup")
+        firstName: sanityzeHTML(formData.get("firstnameSignup")),
+        lastName: sanityzeHTML(formData.get("nameSignup")),
+        email: sanityzeHTML(formData.get("emailSignup")),
+        password: sanityzeHTML(formData.get("pswSignup"))
     });
 
     const requestOptions = {
