@@ -5,17 +5,17 @@
 </div>
 
 <div class="container mt-3">
-    <form>
+    <form id="signinForm">
         <div class="mb-3">
             <label for="emailInput" class="form-label">Email</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Votre email">
+            <input type="email" class="form-control" id="emailInput" placeholder="Votre email" name="emailInput">
             <div class="invalid-feedback">
                 Le mail et/ou le mot de passe sont inconnus.
             </div>
         </div>
         <div class="mb-3">
             <label for="pswInput" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="pswInput">
+            <input type="password" class="form-control" id="pswInput" name="pswInput">
         </div>
         <div class="text-center">
             <button type="button" class="btn btn-primary" id="btnSignin">Connexion</button>

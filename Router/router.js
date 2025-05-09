@@ -1,5 +1,6 @@
 import Route from "./Route.js";
 import { allRoutes, websiteName } from "./allRoutes.js";
+import { isConnected, showHideForRoles, getRole } from '../js/script.js';
 
 // Création d'une route pour la page 404 (page introuvable)
 const route404 = new Route("404", "Page introuvable", "/pages/404.html", []);
@@ -47,15 +48,24 @@ const LoadContentPage = async () => {
     // Ajout du contenu HTML à l'élément avec l'ID "main-page"
     document.getElementById("main-page").innerHTML = html;
 
-    // Ajout du contenu JavaScript
-    if (actualRoute.pathJS != "") {
-        // Création d'une balise script
-        let scriptTag = document.createElement("script");
-        scriptTag.setAttribute("type", "text/javascript");
-        scriptTag.setAttribute("src", actualRoute.pathJS);
+    // // Ajout du contenu JavaScript SANS import (ORIGINE Studi)
+    // if (actualRoute.pathJS != "") {
+    //     // Création d'une balise script
+    //     let scriptTag = document.createElement("script");
+    //     scriptTag.setAttribute("type", "text/javascript");
+    //     scriptTag.setAttribute("src", actualRoute.pathJS);
 
-        // Ajout de la balise script au corps du document
-        document.querySelector("body").appendChild(scriptTag);
+    //     // Ajout de la balise script au corps du document
+    //     document.querySelector("body").appendChild(scriptTag);
+    // }
+
+    // Ajout du contenu JavaScript AVEC import
+    if (actualRoute.pathJS) {
+        try {
+            await import(actualRoute.pathJS);
+        } catch (error) {
+            console.error("Erreur lors du chargement du module :", actualRoute.pathJS, error);
+        }
     }
 
     // Changement du titre de la page

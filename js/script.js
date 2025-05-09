@@ -1,6 +1,8 @@
-const tokenCookieName = "accesstoken";
+export const apiUrl = "http://127.0.0.1:8000/api/";
+
+export const tokenCookieName = "accesstoken";
 // 2 méthodes pour créer et lire un token à l'aide des méthodes ---Cookie
-function setToken(token) {
+export function setToken(token) {
     setCookie(tokenCookieName,token,7);
 }
 function getToken() {
@@ -8,15 +10,15 @@ function getToken() {
 }
 
 
-const roleCookieName = "role";
+export const roleCookieName = "role";
 // Méthode pour lire le role
-function getRole() {
+export function getRole() {
     return getCookie(roleCookieName);
 }
 
 
 // 3 méthodes pour créer, lire et supprimer des cookies, à chercher sur internet
-function setCookie(name,value,days) {
+export function setCookie(name,value,days) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -35,13 +37,13 @@ function getCookie(name) {
     }
     return null;
 }
-function eraseCookie(name) {   
+export function eraseCookie(name) {   
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 
 // Methode vérifiant si on est connecté
-function isConnected(){
+export function isConnected(){
     if(getToken() === null || getToken() === undefined){
         return false;
     }else{
@@ -57,7 +59,7 @@ connected (admin ou user)
     - user
 */
 // Methode qui affiche/masque les éléments HTML (ayant le data attribute "data-show") en fonction du rôle.
-function showHideForRoles(){
+export function showHideForRoles(){
     const userConnected = isConnected();
     const role = getRole();
 

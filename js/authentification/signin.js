@@ -1,29 +1,57 @@
+import { setToken, setCookie, roleCookieName, apiUrl } from '../script.js';
+
 // gestion de la connexion
 // On utilise bien des var au cas ou l'utilisateur quitte puis revient sur la page, à voir si il est possible de gérer cela autrement.
 var emailInput = document.getElementById("emailInput");
 var pswInput = document.getElementById("pswInput");
 var btnSignin = document.getElementById("btnSignin");
+const signinForm = document.getElementById("signinForm");
 
 btnSignin.addEventListener("click", checkCredentials);
 
 // vérification des données de connexions
 function checkCredentials(){
-    // Ici, il faudra appeler l'API pour vérifier les crédentials en BDD
+    const formData = new FormData(signinForm);
+    
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    if(emailInput.value === "test@mail.com" && pswInput.value === "test"){
-        // il faudra récupérer le vrai token
-        const token = "vnvenvoejnvoiejnboinbjbrtsljbrijnsiojtgbspboisrpto"
+    const raw = JSON.stringify({
+        username: formData.get("emailInput"),
+        password: formData.get("pswInput")
+    });
 
-        // Mise du token en cookie
-        setToken(token);
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+    };
 
-        // Attribution du role, vrai role à récupérer en BDD
-        setCookie(roleCookieName,"admin",7);
-        // setCookie(roleCookieName,"user",7);
+    fetch(apiUrl + "login", requestOptions)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                emailInput.classList.add("is-invalid");
+                pswInput.classList.add("is-invalid");
+            }
+            
+        })
+        .then(result => {
+            // Récupération du token
+            const token = result.apiToken;
 
-        window.location.replace("/");
-    } else {
-        emailInput.classList.add("is-invalid");
-        pswInput.classList.add("is-invalid");
-    }
+            // Mise du token en cookie
+            setToken(token);
+
+            // Attribution du role
+            setCookie(roleCookieName,result.roles[0],7);
+
+            document.location.href="/";
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
 }

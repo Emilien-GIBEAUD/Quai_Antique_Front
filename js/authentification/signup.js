@@ -1,4 +1,3 @@
-// Vérification du formulaire saisi
 
 const nameSignup = document.getElementById("nameSignup");
 const firstnameSignup = document.getElementById("firstnameSignup");
@@ -6,13 +5,19 @@ const emailSignup = document.getElementById("emailSignup");
 const pswSignup = document.getElementById("pswSignup");
 const pswConfirmSignup = document.getElementById("pswConfirmSignup");
 const btnSuscribe = document.getElementById("btnSuscribe");
+const suscribeForm = document.getElementById("suscribeForm");
+
 btnSuscribe.disabled = true;
 
+// Vérification du formulaire saisi
 nameSignup.addEventListener("keyup", checkInputs);
 firstnameSignup.addEventListener("keyup", checkInputs);
 emailSignup.addEventListener("keyup", checkInputs);
 pswSignup.addEventListener("keyup", checkInputs);
 pswConfirmSignup.addEventListener("keyup", checkInputs);
+
+// Envoie du formulaire
+btnSuscribe.addEventListener("click", userSuscription);
 
 // fonction qui vérifie tous les inputs
 function checkInputs(){
@@ -85,4 +90,43 @@ function checkPSWConfirm(input1,input2){
         input2.classList.add("is-invalid");
         return false;
     }
+}
+
+function userSuscription(){
+    const formData = new FormData(suscribeForm);
+    
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        firstName: formData.get("firstnameSignup"),
+        lastName: formData.get("nameSignup"),
+        email: formData.get("emailSignup"),
+        password: formData.get("pswSignup")
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+    };
+
+    fetch(apiUrl + "registration", requestOptions)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Erreur lors de l'inscription !");
+            }
+            
+        })
+        .then(result => {
+            alert("Bravo " + formData.get("firstnameSignup") + ", vous êtes maintenant inscrit.");
+            document.location.href="/signin";
+        })
+        .catch(error => {
+            alert(error.message);
+            console.error(error);
+        });
 }
