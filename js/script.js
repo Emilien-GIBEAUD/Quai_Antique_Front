@@ -19,21 +19,21 @@ export function getRole() {
 
 // 3 méthodes pour créer, lire et supprimer des cookies, à chercher sur internet
 export function setCookie(name,value,days) {
-    var expires = "";
+    let expires = "";
     if (days) {
-        var date = new Date();
+        let date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
 function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for(const element of ca) {
+        let c = element;
+        while (c.startsWith(' ')) c = c.substring(1,c.length);
+        if (c.startsWith(nameEQ)) return c.substring(nameEQ.length,c.length);
     }
     return null;
 }
@@ -44,19 +44,14 @@ export function eraseCookie(name) {
 
 // Methode vérifiant si on est connecté
 export function isConnected(){
-    if(getToken() === null || getToken() === undefined){
-        return false;
-    }else{
-        return true;
-    }
+    return !(getToken() === null || getToken() === undefined);
 }
 
-
-/* Les roles
+/* Les roles    chercher dans l'API si des erreurs se produisent 
 disconnected
 connected (admin ou user)
-    - admin
-    - user
+    - user      l'API renvoie ROLE_USER à priori
+    - admin     ROLE_USER ???
 */
 // Methode qui affiche/masque les éléments HTML (ayant le data attribute "data-show") en fonction du rôle.
 export function showHideForRoles(){

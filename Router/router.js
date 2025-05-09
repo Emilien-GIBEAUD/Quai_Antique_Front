@@ -48,14 +48,14 @@ const LoadContentPage = async () => {
     // Ajout du contenu HTML à l'élément avec l'ID "main-page"
     document.getElementById("main-page").innerHTML = html;
 
-    // // Ajout du contenu JavaScript SANS import (ORIGINE Studi)
+    // Ajout du contenu JavaScript SANS import (ORIGINE Studi)
     // if (actualRoute.pathJS != "") {
     //     // Création d'une balise script
     //     let scriptTag = document.createElement("script");
     //     scriptTag.setAttribute("type", "text/javascript");
     //     scriptTag.setAttribute("src", actualRoute.pathJS);
 
-    //     // Ajout de la balise script au corps du document
+    //     Ajout de la balise script au corps du document
     //     document.querySelector("body").appendChild(scriptTag);
     // }
 
@@ -75,7 +75,7 @@ const LoadContentPage = async () => {
     showHideForRoles();
 };
 
-// // Fonction pour gérer les événements de routage (clic sur les liens)
+// Fonction pour gérer les événements de routage (clic sur les liens)
 // const routeEvent = (event) => {
 //     event = event || window.event;
 //     event.preventDefault();
@@ -104,3 +104,4 @@ window.onpopstate = LoadContentPage;
 window.route = routeEvent;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
+

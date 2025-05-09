@@ -11,7 +11,7 @@ export default class Route {
 /* => authorize
 [] -> Tout le monde peut y accéder
 ["disconnected"] -> Réserver aux utilisateurs déconnecté 
-["client"] -> Réserver aux utilisateurs avec le rôle client 
-["admin"] -> Réserver aux utilisateurs avec le rôle admin 
-["admin", "client"] -> Réserver aux utilisateurs avec le rôle client OU admin
+["ROLE_USER"] -> Réserver aux utilisateurs avec le rôle client (-- En accord avec l'API --)
+["admin"] -> Réserver aux utilisateurs avec le rôle admin (-- A voir si ROLE_ADMIN dans l'API --)
+["admin", "ROLE_USER"] -> Réserver aux utilisateurs avec le rôle client OU admin (-- A voir si ROLE_ADMIN dans l'API --)
 */
