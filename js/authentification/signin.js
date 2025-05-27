@@ -46,8 +46,7 @@ function checkCredentials(){
             setToken(token);
 
             // Attribution du role
-            // setCookie(roleCookieName,result.roles[0],7);     // ROLE_USER
-            setCookie(roleCookieName,"ROLE_ADMIN",7);
+            setCookie(roleCookieName,result.roles[0],7);
 
             document.location.href="/";
         })

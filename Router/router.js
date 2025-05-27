@@ -28,7 +28,7 @@ const LoadContentPage = async () => {
     // Récupération de l'URL actuelle
     const actualRoute = getRouteByUrl(path);
 
-    //Vérifier les droits d'accès à la page
+    //Vérification des droits d'accès à la page
     const allRolesArray = actualRoute.authorize;
     if(allRolesArray.length > 0){
         if(allRolesArray.includes("disconnected")){
@@ -48,21 +48,13 @@ const LoadContentPage = async () => {
     // Ajout du contenu HTML à l'élément avec l'ID "main-page"
     document.getElementById("main-page").innerHTML = html;
 
-    // Ajout du contenu JavaScript SANS import (ORIGINE Studi)
-    // if (actualRoute.pathJS != "") {
-    //     // Création d'une balise script
-    //     let scriptTag = document.createElement("script");
-    //     scriptTag.setAttribute("type", "text/javascript");
-    //     scriptTag.setAttribute("src", actualRoute.pathJS);
-
-    //     Ajout de la balise script au corps du document
-    //     document.querySelector("body").appendChild(scriptTag);
-    // }
-
     // Ajout du contenu JavaScript AVEC import
     if (actualRoute.pathJS) {
         try {
-            await import(actualRoute.pathJS);
+            const module = await import(actualRoute.pathJS);
+            if (typeof module.initPage === 'function') {
+                module.initPage(); // Appelé automatiquement si défini
+            }
         } catch (error) {
             console.error("Erreur lors du chargement du module :", actualRoute.pathJS, error);
         }
@@ -74,16 +66,6 @@ const LoadContentPage = async () => {
     // Afficher/masquer les éléments en fonction du rôle
     showHideForRoles();
 };
-
-// Fonction pour gérer les événements de routage (clic sur les liens)
-// const routeEvent = (event) => {
-//     event = event || window.event;
-//     event.preventDefault();
-//     // Mise à jour de l'URL dans l'historique du navigateur
-//     window.history.pushState({}, "", event.target.href);
-//     // Chargement du contenu de la nouvelle page
-//     LoadContentPage();
-// };
 
 // Fonction pour gérer les événements de routage (clic sur les liens) ==> sans window.event qui est déprécié
 const routeEvent = (event) => {

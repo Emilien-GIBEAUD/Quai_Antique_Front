@@ -1,4 +1,4 @@
-export const apiUrl = "http://127.0.0.1:8000/api/";
+export const apiUrl = "https://127.0.0.1:8000/api/";
 
 
 export const tokenCookieName = "accesstoken";
@@ -16,7 +16,7 @@ export function getRole() {
     return getCookie(roleCookieName);
 }
 
-// Affichage des informations utilisateur dans le 
+// Affichage des informations utilisateur dans le header
 if (isConnected()) {
     const infos = await getInfoUser();
     const userName = document.getElementById("userName");
@@ -108,7 +108,7 @@ async function getInfoUser(){
         redirect: "follow",
     };
 
-    return fetch(apiUrl + "account/me", requestOptions)
+    return fetch(apiUrl + "me", requestOptions)
         .then(response => {
             if (response.ok) {
                 return response.json();

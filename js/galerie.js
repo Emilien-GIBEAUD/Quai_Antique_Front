@@ -1,14 +1,22 @@
 import { sanityzeHTML } from './script.js';
 
-const galerieImages = document.getElementById("allImages");
+// // Solution d'origine, ne fonctionne qu'après avoir rafraichi la page ...
+// const galerieImages = document.getElementById("allImages");
+// // Récupérer les infos des images
+//     let titre = "titre";
+//     let imgSource = "../images/chef2.jpg";
+// let monImage = getImage(titre, imgSource);
+// galerieImages.innerHTML = monImage;
 
-// Récupérer les infos des images
-let titre = "titre";
-let imgSource = "../images/chef2.jpg";
+export function initPage() {
+    const galerieImages = document.getElementById("allImages");
+    if (!galerieImages) return;
 
-let monImage = getImage(titre, imgSource);
-
-galerieImages.innerHTML = monImage;
+    let titre = "titre";
+    let imgSource = "../images/chef2.jpg";
+    let monImage = getImage(titre, imgSource);
+    galerieImages.innerHTML = monImage;
+}
 
 function getImage(titre, urlImage){
     titre = sanityzeHTML(titre);
