@@ -1,4 +1,5 @@
 export const apiUrl = "https://127.0.0.1:8000/api/";
+export const picturesUrl = "https://127.0.0.1:8000/uploads/pictures/";
 
 
 export const tokenCookieName = "accesstoken";
@@ -6,7 +7,7 @@ export const tokenCookieName = "accesstoken";
 export function setToken(token) {
     setCookie(tokenCookieName,token,7);
 }
-function getToken() {
+export function getToken() {
     return getCookie(tokenCookieName);
 }
 

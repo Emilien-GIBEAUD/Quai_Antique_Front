@@ -28,17 +28,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" enctype="multipart/form-data" id="pictureForm">
                     <div class="mb-3">
-                        <label for="photoNameInput" class="form-label">Titre</label>
-                        <input type="text" class="form-control" id="photoNameInput" placeholder="Saisir le titre de la photo">
+                        <label for="titleInput" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="titleInput" name="titleInput" placeholder="Saisir le titre de la photo">
                     </div>
                     <div class="mb-3">
-                        <label for="photoInput" class="form-label">Photo</label>
-                        <input type="file" class="form-control" id="photoInput">
+                        <label for="pictureInput" class="form-label">Photo</label>
+                        <input type="file" class="form-control" id="pictureInput" name="pictureInput">
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                        <button type="button" class="btn btn-primary" id="btnEditPicture">Enregistrer</button>
                     </div>
                 </form>
             </div>
