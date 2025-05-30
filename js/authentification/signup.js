@@ -121,7 +121,6 @@ function userSuscription(){
             } else {
                 throw new Error("Erreur lors de l'inscription !");
             }
-            
         })
         .then(result => {
             alert("Bravo " + formData.get("firstnameSignup") + ", vous êtes maintenant inscrit.");

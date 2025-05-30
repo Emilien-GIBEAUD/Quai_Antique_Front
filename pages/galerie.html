@@ -31,11 +31,11 @@
                 <form method="post" enctype="multipart/form-data" id="pictureForm">
                     <div class="mb-3">
                         <label for="titleInput" class="form-label">Titre</label>
-                        <input type="text" class="form-control" id="titleInput" name="titleInput" placeholder="Saisir le titre de la photo">
+                        <input type="text" class="form-control" id="titleInput" name="title" placeholder="Saisir le titre de la photo">
                     </div>
                     <div class="mb-3">
                         <label for="pictureInput" class="form-label">Photo</label>
-                        <input type="file" class="form-control" id="pictureInput" name="pictureInput">
+                        <input type="file" class="form-control" id="pictureInput" name="pictureFile">
                     </div>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary" id="btnEditPicture">Enregistrer</button>
@@ -57,11 +57,11 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3 text-center">
-                        <p>Titre</p>
-                        <img class="w-100 rounded-4" src="../images/chef2.jpg" alt="Photo du chef Arnaud Michant">
+                        <p id="deleteImageTitle">Titre</p>
+                        <img id="deleteImagePreview" class="w-100 rounded-4" src="" alt="">
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Supprimer</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     </div>
                 </form>
