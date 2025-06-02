@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="text-center pt-4" data-show="admin">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageEditModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageCreateModal">
             Ajouter une photo
         </button>
     </div>
@@ -19,12 +19,12 @@
 
 </div>
 
-<!-- Modal Edition -->
-<div class="modal fade" id="imageEditModal" tabindex="-1" aria-labelledby="imageEditModalLabel" aria-hidden="true">
+<!-- Modal Creation -->
+<div class="modal fade" id="imageCreateModal" tabindex="-1" aria-labelledby="imageCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title fs-5" id="imageEditModalLabel">Edition photo</h2>
+                <h2 class="modal-title fs-5" id="imageCreateModalLabel">Ajout d'une photo</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -38,7 +38,41 @@
                         <input type="file" class="form-control" id="pictureInput" name="pictureFile">
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary" id="btnEditPicture">Enregistrer</button>
+                        <button type="button" class="btn btn-primary" id="btnCreatePicture">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Modification -->
+<div class="modal fade" id="imageEditModal" tabindex="-1" aria-labelledby="imageEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="imageEditModalLabel">Modification d'une photo</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="pictureFormEdit">
+                    <div class="mb-3 text-center">
+                        <p id="editImageTitle">Titre</p>
+                        <img id="editImagePreview" class="w-100 rounded-4" src="" alt="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="titleInput" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="titleInput" name="title" placeholder="Saisir le titre de la photo">
+                        <p class="fw-light fst-italic">Laisser vide si vous ne souhaitez pas changer de titre.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pictureInputEdit" class="form-label">Photo</label>
+                        <input type="file" class="form-control" id="pictureInputEdit" name="pictureFile">
+                        <p class="fw-light fst-italic">Laisser vide si vous ne souhaitez pas changer de photo.</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" id="confirmEditBtn">Modifier</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     </div>
                 </form>
             </div>
