@@ -1,6 +1,11 @@
-export const apiUrl = "https://127.0.0.1:8000/api/";
-export const picturesUrl = "https://127.0.0.1:8000/uploads/pictures/";
+// // en local :
+// export const apiUrl = "https://127.0.0.1:8000/api/";
+// export const picturesUrl = "https://127.0.0.1:8000/uploads/pictures/";
 
+// avec docker (remplacer localhost par le nom de domaine sauf erreur de ma part)
+export const apiUrl = "https://localhost/api/";
+export const picturesUrl = "https://localhost/uploads/pictures/";
+// A voir pour gérer tout ça en automatique
 
 export const tokenCookieName = "accesstoken";
 // 2 méthodes pour créer et lire un token à l'aide des méthodes ---Cookie
@@ -57,8 +62,8 @@ export function isConnected(){
 /* Les roles    chercher dans l'API si des erreurs se produisent 
 disconnected
 connected (admin ou user)
-    - user      l'API renvoie ROLE_USER à priori
-    - admin     ROLE_USER ???
+    - user      l'API renvoie "ROLE_USER" à priori
+    - admin     "ROLE_ADMIN"
 */
 // Methode qui affiche/masque les éléments HTML (ayant le data attribute "data-show") en fonction du rôle.
 export function showHideForRoles(){
